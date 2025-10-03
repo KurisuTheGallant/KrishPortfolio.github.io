@@ -237,55 +237,55 @@ span {
 
 
 .projects-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3rem;
-    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 15rem;
 }
 
 
 .projects-container .projects-box {
+    position: relative;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem var(--bg-color);
+    overflow: hidden;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    background: none;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    margin: 0;
-    min-width: unset;
-    max-width: unset;
-    text-align: left;
 }
 
 
 .projects-box img {
-    display: block;
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 2rem;
-    margin-right: 2.5rem;
-    box-shadow: 0 0 16px rgba(0,0,0,0.15);
+    width: 100%;
+    height: 100%;
+    transition: .5s ease;
 }
+
+.projects-box:hover img {
+    transform: scale(1.1);
+} 
 
 .projects-box .projects-layer {
-    background: none;
-    position: static;
-    width: auto;
-    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, .1), var(--main-color));
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: column;
     text-align: left;
-    padding: 0;
-    margin-bottom: 0;
+    padding: 0 2rem;
+    transform: translateY(100%);
+    transition: .5s ease;
 }
 
+.projects-box:hover .projects-layer {
+    transform: translateY(0);
+} 
+
 .projects-layer h4 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: var(--main-color);
     margin-bottom: 1rem;
     font-weight: 600;
@@ -293,7 +293,7 @@ span {
 
 .projects-layer p {
     font-size: 1.6rem;
-    margin: 1rem 0 2rem;
+    margin: .3rem 0 1rem;
     color: var(--text-color);
     line-height: 1.6;
 }
