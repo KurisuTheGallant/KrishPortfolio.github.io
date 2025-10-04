@@ -51,3 +51,28 @@ ScrollReveal({
  ScrollReveal().reveal('.home-img, .services-container,.projects-box, .games-box, .contact form', { origin: 'bottom' });
  ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
  ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
+
+ const contactForm = document.getElementById('contact-form');
+
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent page reload
+
+    const name = this.name.value;
+    const email = this.email.value;
+    const message = this.message.value;
+
+    fetch("https://portfolio-contact-backend.onrender.com/contact", { // replace with your Render URL
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message })
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message); // success message
+        contactForm.reset();  // clear form
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Something went wrong, please try again.");
+    });
+});
