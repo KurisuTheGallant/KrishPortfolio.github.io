@@ -61,18 +61,18 @@ contactForm.addEventListener('submit', function(e) {
     const email = this.email.value;
     const message = this.message.value;
 
-    fetch("https://portfolio-contact-backend.onrender.com/contact", { // replace with your Render URL
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message })
-    })
-    .then(res => res.json())
-    .then(data => {
-        alert(data.message); // success message
-        contactForm.reset();  // clear form
-    })
-    .catch(err => {
-        console.error(err);
-        alert("Something went wrong, please try again.");
-    });
+fetch("https://portfolio-contact-backend-svic.onrender.com/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, message })
+})
+.then(res => res.json())
+.then(data => {
+    alert(data.message);
+    contactForm.reset();
+})
+.catch(err => {
+    console.error(err);
+    alert("Something went wrong. Please try again.");
+});
 });
