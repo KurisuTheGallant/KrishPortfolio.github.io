@@ -238,10 +238,19 @@ span {
 
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* show projects in 2 columns so 4 items form a 2x2 layout */
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 2.5rem;
     margin-top: 15rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+        margin-top: 8rem;
+    }
 }
 
 
